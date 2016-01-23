@@ -400,7 +400,7 @@ as.data.frame.neuronlist<-function(x, row.names = names(x), optional = FALSE, ..
 #' plot3d(xyzflip)
 #' rgl.close()
 #' }
-nlapply<-function (X, FUN, ..., subset=NULL, OmitFailures=NA, .progress='auto'){
+nlapply<-function (X, FUN, ..., subset=NULL, OmitFailures=NA, .progress='nat'){
   
   if(.progress=='auto') {
     if(length(X)>=10 && interactive()) .progress="text"
@@ -433,6 +433,16 @@ nlapply<-function (X, FUN, ..., subset=NULL, OmitFailures=NA, .progress='auto'){
     }
     Y
   }
+}
+
+progress_nat<-function(show_after=1, ...){
+  if(!interactive()) return(plyr::progress_none())
+  pb <- NULL
+  list(init = function(x, ...) {
+    pb<<-progress::progress_bar$new(total = x, show_after=show_after, ...)
+  }, step = function() {
+    pb$tick()
+  }, term = function() NULL)
 }
 
 #' @inheritParams base::mapply
