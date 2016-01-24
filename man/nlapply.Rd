@@ -5,7 +5,7 @@
 \alias{nmapply}
 \title{lapply and mapply for neuronlists (with optional parallelisation)}
 \usage{
-nlapply(X, FUN, ..., subset = NULL, OmitFailures = NA, .progress = "auto")
+nlapply(X, FUN, ..., subset = NULL, OmitFailures = NA, .progress = "nat")
 
 nmapply(FUN, X, ..., MoreArgs = NULL, SIMPLIFY = FALSE, USE.NAMES = TRUE,
   subset = NULL, OmitFailures = NA)
